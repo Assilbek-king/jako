@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Umar">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="/static/images2/favicon.png">
+    <style>
+        .chart-container {
+  padding: 25px;
+}
+
+.shadow {
+  -webkit-filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.5));
+}
+    </style>
+    <!-- Site Title  -->
+    <title>Js Financial</title>
+    <!-- Bundle and Base CSS -->
+    <link rel="stylesheet" href="/static/assets2/css/vendor.bundle.css?ver=200">
+    <link rel="stylesheet" href="/static/assets2/css/style-azalea.css?ver=200">
+    <!-- Extra CSS -->
+    <link rel="stylesheet" href="/static/assets2/css/theme.css?ver=200">
+</head>
+
+<body class="nk-body body-wider bg-theme">
+    <div class="nk-wrap">
+        <header class="nk-header page-header is-transparent is-sticky is-dark" id="header">
+            <!-- Header @s -->
+            <div class="header-main">
+                <div class="header-container container container-xxl">
+                    <div class="header-wrap">
+                        <!-- Logo @s -->
+                        <div class="header-logo logo animated" data-animate="fadeInDown" data-delay=".6">
+                            <a href="/" class="logo-link">
+                                <img class="logo-dark" src="/static/images2/logo-s2-white.png" srcset="/static/images2/logo-s2-white2x.png 2x" alt="logo">
+                                <img class="logo-light" src="/static/images2/logo-s2-white.png" srcset="/static/images2/logo-s2-white2x.png 2x" alt="logo">
+                            </a>
+                        </div>
+                        <!-- Menu Toogle @s -->
+                        <div class="header-nav-toggle">
+                            <a href="#" class="navbar-toggle" data-menu-toggle="header-menu">
+                                <div class="toggle-line">
+                                    <span></span>
+                                </div>
+                            </a>
+                        </div>
+                        <!-- Menu @s -->
+                        <div class="header-navbar animated" data-animate="fadeInDown" data-delay=".6">
+                            <nav class="header-menu" id="header-menu">
+                                
+                                <ul class="menu-btns">
+                                    <li><a href="/login" class="btn btn-md btn-thin btn-outline btn-auto btn-primary btn-round no-change"><span>Войти</span></a></li>
+                                </ul>
+                            </nav>
+                        </div><!-- .header-navbar @e -->
+                    </div>
+                </div>
+            </div><!-- .header-main @e -->
+            <div class="banner banner-fs tc-light">
+                <div class="nk-block nk-block-sm nk-block-header my-auto">
+                    <div class="container container-xxl pt-5">
+                        <div class="row align-items-center justify-content-center justify-content-lg-between gutter-vr-30px">
+                            <div class="col-lg-6 order-lg-last">
+                                <div class="banner-gfx banner-gfx-auto animated" data-animate="fadeInUp" data-delay=".7" style="text-align: center;">
+                                    <div id="chart" class="chart-container" style="color: white;"></div>
+                                      <script src='https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js'></script><script >
+                                          var dataset = [
+                                          {% for di in diagrams %}
+    { name: '{{di.title}}', percent: {{di.percent}} },
+    {% endfor %}
+];
+ 
+var pie=d3.layout.pie()
+  .value(function(d){return d.percent})
+  .sort(null)
+  .padAngle(.03);
+ 
+var w=300,h=300;
+ 
+var outerRadius=w/2;
+var innerRadius=100;
+ 
+var color = d3.scale.category10();
+ 
+var arc=d3.svg.arc()
+  .outerRadius(outerRadius)
+  .innerRadius(innerRadius);
+ 
+var svg=d3.select("#chart")
+  .append("svg")
+  .attr({
+      width:w,
+      height:h,
+      class:'shadow'
+  }).append('g')
+  .attr({
+      transform:'translate('+w/2+','+h/2+')'
+  });
+var path=svg.selectAll('path')
+  .data(pie(dataset))
+  .enter()
+  .append('path')
+  .attr({
+      d:arc,
+      fill:function(d,i){
+          return color(d.data.name);
+      }
+  });
+ 
+path.transition()
+  .duration(1000)
+  .attrTween('d', function(d) {
+      var interpolate = d3.interpolate({startAngle: 0, endAngle: 0}, d);
+      return function(t) {
+          return arc(interpolate(t));
+      };
+  });
+ 
+ 
+var restOfTheData=function(){
+    var text=svg.selectAll('text')
+        .data(pie(dataset))
+        .enter()
+        .append("text")
+        .transition()
+        .duration(200)
+        .attr("transform", function (d) {
+            return "translate(" + arc.centroid(d) + ")";
+        })
+        .attr("dy", ".4em")
+        .attr("text-anchor", "middle")
+        .text(function(d){
+            return d.data.percent+"%";
+        })
+        .style({
+            fill:'#fff',
+            'font-size':'10px'
+        });
+ 
+    var legendRectSize=20;
+    var legendSpacing=7;
+    var legendHeight=legendRectSize+legendSpacing;
+ 
+ 
+    var legend=svg.selectAll('.legend')
+        .data(color.domain())
+        .enter()
+        .append('g')
+        .attr({
+            class:'legend',
+            transform:function(d,i){
+                //Just a calculation for x & y position
+                return 'translate(-35,' + ((i*legendHeight)-65) + ')';
+            }
+        });
+    legend.append('rect')
+        .attr({
+            width:legendRectSize,
+            height:legendRectSize,
+            rx:20,
+            ry:20
+        })
+        .style({
+            fill:color,
+            stroke:color
+        });
+ 
+    legend.append('text')
+        .attr({
+            x:30,
+            y:15
+        })
+        .text(function(d){
+            return d;
+        }).style({
+            fill:'#237',
+            'font-size':'14px'
+        });
+};
+ 
+setTimeout(restOfTheData,1000);
+                                      </script>
+                                </div>
+                            </div><!-- .col -->
+                            <div class="col-xl-5 col-lg-6 col-sm-10 text-center text-lg-start">
+                                <div class="banner-caption">
+                                    <h1 class="title title-lg ttu animated" data-animate="fadeInUp" data-delay=".8">Управление рисками для увеличения вашего благосостояния</h1>
+                                    <p class="lead animated" data-animate="fadeInUp" data-delay=".9">В JS Financial основное внимание уделяется управлению рисками. Слишком много людей идут на слишком большой риск ради достижения своих финансовых целей. JS Finanical здесь, чтобы помочь вам увеличить свое богатство.</p>
+                                   <!--  <div class="cpn-action animated" data-animate="fadeInUp" data-delay="1">
+                                        <a class="btn btn-primary btn-round" href="#">PRIVATE SALE</a>
+                                    </div> -->
+                                </div>
+                            </div><!-- .col -->
+                        </div><!-- .row -->
+                    </div>
+                </div>
+                <div class="nk-block nk-block-status">
+                    <div class="container container-xxl">
+                        <div class="row gutter-vr-40px justify-content-between">
+                            <div class="col-xxl-12 col-xl-12 col-lg-12">
+                                <div class="progress-wrap progress-wrap-point animated" data-animate="fadeInUp" data-delay="0.8">
+                                    <ul class="progress-info progress-info-s2">
+                                        <li>капитализация - <span>$ 500,000</span></li>
+                                        <li class="text-end">Цель - <span>$ 1,000,000</span></li>
+                                    </ul>
+                                    <div class="progress-bar progress-bar-xs">
+                                        <div class="progress-percent progress-percent-s2" data-percent="50"></div>
+                                        <!-- <div class="progress-point" data-point="25">Soft Cap</div>
+                                        <div class="progress-point" data-point="55">Crowdsale</div>
+                                        <div class="progress-point" data-point="85">Hard Cap</div> -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-xxl-5 col-xl-6 col-lg-7 text-center text-sm-start">
+                                <div class="row justify-content-around gutter-vr-30px">
+                                    <div class="col-sm-4 col-md-6 col-lg-4 col-xl-5">
+                                        <div class="status-info animated" data-animate="fadeInUp" data-delay="0.9">
+                                            <h6 class="title title-xxs tc-default status-title ttu">Current Bonus</h6>
+                                            <h3 class="fz-3 fw-3 status-percent">20%</h3>
+                                            <div class="fz-8">Contributors can receive</div>
+                                        </div>
+                                    </div>
+                                     <div class="col-sm-8 col-md-6 col-lg-7 col-xl-7">
+                                        <div class="status-countdown float-sm-end animated" data-animate="fadeInUp" data-delay="1">
+                                            <h6 class="title title-xxs tc-default status-title ttu">The Bonus ends in</h6>
+                                            <div class="countdown justify-content-center justify-content-sm-start countdown-s3 countdown-s3-alt" data-date="2022/06/11" data-min-text="Minutes" data-sec-text="Seconds"></div>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </header>
+        
+        <footer class="nk-footer-bar section section-s tc-light">
+            <div class="container container-xxl">
+                <div class="row gutter-vr-10px">
+                    <!-- <div class="col-lg-6 order-lg-last text-lg-end">
+                        <ul class="footer-nav">
+                            <li><a href="#">Политика конфиденциальности</a></li>
+                             <li><a href="#">Terms of sales</a></li> 
+                        </ul>
+                    </div> -->
+                    <div class="col-lg-12" style="text-align: center;">
+                        <div class="copyright-text copyright-text-s2">©2023. Designed  by <a href="https://umar.kz/">Umar</a>.</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="nk-ovm nk-ovm-repeat nk-ovm-fixed shape-i" style="background-image: url(/static/assets2/images/shape-i.png)">
+            <div class="ovm-line"></div>
+        </div>
+    </div>
+    <!-- preloader -->
+    <div class="preloader preloader-alt no-split"><span class="spinner spinner-alt"><img class="spinner-brand" src="/static/images2/logo-s2-white.png" alt=""></span></div>
+    <!-- JavaScript -->
+    <script src="/static/assets2/js/jquery.bundle.js?ver=200"></script>
+    <script src="/static/assets2/js/scripts.js?ver=200"></script>
+    <script src="/static/assets2/js/charts.js?ver=200"></script>
+    <script src="/static/assets2/js/toastr.examples.js?ver=200"></script>
+</body>
+
+</html>
