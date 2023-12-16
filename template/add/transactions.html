@@ -31,7 +31,7 @@
                         </div>
                     </a> .toggle-nav -->
                      <div class="site-logo">
-                        <a href="index.html" class="site-brand">
+                        <a href="/" class="site-brand">
                             <img src="/static/images/logo.png" alt="logo" srcset="/static/images/logo2x.png 2x">
                         </a>
                     </div><!-- .site-logo -->
@@ -40,12 +40,12 @@
                         <div class="dropdown-menu dropdown-menu-end">
                             <div class="user-dropdown">
                                 <div class="user-dropdown-head">
-                                    <h6 class="user-dropdown-name">Stefan Harary <span></span></h6>
-                                    <span class="user-dropdown-email">useremail@example.com</span>
+                                    <h6 class="user-dropdown-name">{{ active_user.name }} {{ active_user.second_name }} <span></span></h6>
+                                    <span class="user-dropdown-email">{{ active_user.email }}</span>
                                 </div>
                                 <div class="user-dropdown-balance">
                                     <h6>Депозиты</h6>
-                                    <h3>$ 120,000,000 </h3>
+                                    <h3>$ {{ active_user.invest_sum }} </h3>
                                    <!--  <ul>
                                         <li>1.240 BTC</li>
                                         <li>19.043 ETH</li>
@@ -58,12 +58,12 @@
                                 </ul> -->
                                 <div class="gaps-1x"></div>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="account.html"><i class="ti ti-user"></i>Кабинет</a></li>
-                                    <li><a href="transactions.html"><i class="ti ti-pie-chart"></i>Доход</a></li>
-                                    <li><a href="referrals.html"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
+                                    <li><a href="/cabinet"><i class="ti ti-user"></i>Кабинет</a></li>
+                                    <li><a href="/profit"><i class="ti ti-pie-chart"></i>Доход</a></li>
+                                    <li><a href="/transaction"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
                                 </ul>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="login.html"><i class="ti ti-power-off"></i>Выйти</a></li>
+                                    <li><a href="/logout"><i class="ti ti-power-off"></i>Выйти</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
             <div class="d-lg-flex align-items-center justify-content-between">
                 <div class="topbar-lg d-none d-lg-block">
                     <div class="site-logo">
-                        <a href="index.html" class="site-brand">
+                        <a href="/" class="site-brand">
                             <img src="/static/images/logo.png" alt="logo" srcset="/static/images/logo2x.png 2x">
                         </a>
                     </div><!-- .site-logo -->
@@ -99,25 +99,25 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div class="user-dropdown">
                                     <div class="user-dropdown-head">
-                                        <h6 class="user-dropdown-name">Stefan Harary <span></span></h6>
-                                        <span class="user-dropdown-email">useremail@example.com</span>
+                                        <h6 class="user-dropdown-name">{{ active_user.name }} {{ active_user.second_name }} <span></span></h6>
+                                        <span class="user-dropdown-email">{{ active_user.email }}</span>
                                     </div>
                                     <div class="user-dropdown-balance">
                                         <h6>Депозиты</h6>
-                                        <h3>$ 120,000,000 </h3>
+                                        <h3>$ {{ active_user.invest_sum }}</h3>
                                    <!--  <ul>
                                         <li>1.240 BTC</li>
                                         <li>19.043 ETH</li>
                                         <li>6,500.13 USD</li>
                                     </ul> -->
                                     </div>
-                                    <ul class="user-dropdown-links">
-                                    <li><a href="account.html"><i class="ti ti-user"></i>Кабинет</a></li>
-                                    <li><a href="transactions.html"><i class="ti ti-pie-chart"></i>Доход</a></li>
-                                    <li><a href="referrals.html"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
+                                   <ul class="user-dropdown-links">
+                                    <li><a href="/cabinet"><i class="ti ti-user"></i>Кабинет</a></li>
+                                    <li><a href="/profit"><i class="ti ti-pie-chart"></i>Доход</a></li>
+                                    <li><a href="/transaction"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
                                 </ul>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="login.html"><i class="ti ti-power-off"></i>Выйти</a></li>
+                                    <li><a href="/logout"><i class="ti ti-power-off"></i>Выйти</a></li>
                                 </ul>
                                 </div>
                             </div>
@@ -137,18 +137,18 @@
                         <div class="user-image">
                             <img src="/static/images/user-thumb-lg.png" alt="thumb">
                         </div>
-                        <h6 class="user-name">Stefan Harary</h6>
-                        <div class="user-uid">Unique ID: <span>IXIA1A105</span></div>
+                        <h6 class="user-name">{{ active_user.name }} {{ active_user.second_name }} </h6>
+<!--                        <div class="user-uid">Unique ID: <span>IXIA1A105</span></div>-->
                        <!--  <ul class="btn-grp guttar-10px">
                             <li><a href="#" class="btn btn-xs btn-warning">Confirm Email</a></li>
                             <li><a href="kyc.html" class="btn btn-xs btn-warning">KYC Pending</a></li>
                         </ul> -->
                     </div><!-- .user-box -->
-                    <ul class="user-icon-nav">
-                        <li><a href="index.html"><em class="ti ti-user"></em>Кабинет</a></li>
-                        <li><a href="transactions.html"><em class="ti ti-pie-chart"></em>Доход</a></li>
-                        <li><a href="referrals.html"><em class="ti ti-control-shuffle"></em>Транзакции</a></li>
-                    </ul><!-- .user-icon-nav -->
+                     <ul class="user-dropdown-links">
+                                    <li><a href="/cabinet"><i class="ti ti-user"></i>Кабинет</a></li>
+                                    <li><a href="/profit"><i class="ti ti-pie-chart"></i>Доход</a></li>
+                                    <li><a href="/transaction"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
+                                </ul><!-- .user-icon-nav -->
                     <div class="user-sidebar-sap"></div><!-- .user-sidebar-sap -->
                     <!-- <ul class="user-nav">
                         <li><a href="how-to.html">How to buy?</a></li>
@@ -176,114 +176,61 @@
                             <thead>
                                 <tr>
                                     <th class="tranx-status"></th>
-                                    <th class="tranx-no"><span>TNX NO</span></th>
-                                    <th class="tranx-token"><span>Tokens</span></th>
-                                    <th class="tranx-amount"><span>Amount</span></th>
-                                    <th class="tranx-from"><span>From</span></th>
+                                    <th class="tranx-no"><span>Дату создания</span></th>
+                                    <th class="tranx-amount"><span>Депозит</span></th>
+                                    <th class="tranx-token"><span>Прибыль</span></th>
                                     <th class="tranx-action"></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for pr in profits %}
                                 <tr>
                                     <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
+                                    <td class="tranx-no"><span>{{ pr.date }}</span></td>
+                                    <td class="tranx-amount"><span>$ {{ pr.user.invest_sum }} </span></td>
+                                    <td class="tranx-token"><span>+ $ {{ pr.profit }} </span></td>
+<!--                                    <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em>-->
                                     <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
+                                        <button data-bs-toggle="modal" style="padding:2px 5px;font-size:12px;margin-right:20px" class="btn btn-primary" data-bs-target="#tranxApproved{{ pr.id }} ">снять</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-pending"><span class="d-none">Pending</span><em class="ti ti-alert"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxPending"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-cancled"><span class="d-none">Canceled</span><em class="ti ti-close"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="tranx-status tranx-status-approved"><span class="d-none">Approved</span><em class="ti ti-check"></em></td>
-                                    <td class="tranx-no"><span>ICIYOW0102</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-token"><span>+5,600</span>ICOX</td>
-                                    <td class="tranx-amount"><span>56.00</span>ETH <em class="fas fa-info-circle" data-bs-toggle="tooltip" data-placement="bottom" title="1 ETH = 100 ICOX"></em></td>
-                                    <td class="tranx-from"><span>1F1t....4xqX</span>08 Jul, 18 10:20PM</td>
-                                    <td class="tranx-action">
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#tranxApproved"><em class="ti ti-more-alt"></em></a>
-                                    </td>
-                                </tr>
+                                
+                                <div class="modal fade show" id="tranxApproved{{ pr.id }}" tabindex="-1" aria-modal="true" role="dialog" >
+        <div class="modal-dialog modal-dialog-centered" style="max-width: 300px;
+    min-width: 300px;margin: 0 auto;">
+            <div class="modal-content">
+                <a href="#" class="modal-close" data-bs-dismiss="modal" aria-label="Close"><em class="ti ti-close"></em></a>
+                <div class="tranx-popup">
+                    <h4 class="text-center">Cколько вы хотите снять</h4>
+<!--                    <p>Transaction <strong>ICIYOW0102</strong> was place on <strong>24-Jul-2022, 12:10 am</strong> and <br> it’s <strong>Successfully Paid.</strong></p>-->
+<!--                    <div class="tranx-purchase-details">-->
+<!--                        <h6>Purchase Details</h6>-->
+                        <form method="post" action="/profit" class="tranx-purchase-info "  style="border:none">
+                            {% csrf_token %}
+                                <div class="tranx-payment-info">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    <input type="hidden" name="userprofit_id" value="{{ pr.id }}">
+                                <input type="text" name="withdrawal" required class="tranx-payment-address" value="" max="{{ pr.profit }} ">
+                                </div>
+                                
+                                <div class="tranx-payment-info pt-2 " >
+                                    <input type="submit" class="w-100 btn btn-primary" value="Отправить" >
+                                </div>
+                        </form>
+                        <!-- .tranx-purchase-info -->
+<!--                        <h6>Payment Deposit From <em class="ti ti-arrow-right"></em> <span>Ethereum Address</span></h6>-->
+<!--                        <div class="tranx-payment-info">-->
+<!--                            <em class="fab fa-ethereum"></em>-->
+<!--                            <input type="text" class="tranx-payment-address" value="0x4156d3342d5c385a87d264f90653733592000581" disabled="">-->
+<!--                        </div>-->
+                        <!-- .tranx-payment-info -->
+                    </div><!-- .tranx-payment-details -->
+                </div><!-- .tranx-popup -->
+            </div><!-- .modal-content -->
+        </div><!-- .modal-dialog -->
+    </div>
+                                
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>

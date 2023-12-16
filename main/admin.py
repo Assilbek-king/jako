@@ -8,3 +8,5 @@ class AdminModelSingle(admin.ModelAdmin):
 
 admin.site.register(Diagram, AdminModelSingle)
 admin.site.register(UserProfile, AdminModelSingle)
+admin.site.register(UserProfit, AdminModelSingle)
+admin.site.register(UserTransaction, AdminModelSingle)

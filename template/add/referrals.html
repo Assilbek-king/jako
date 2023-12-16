@@ -31,7 +31,7 @@
                         </div>
                     </a> .toggle-nav -->
                      <div class="site-logo">
-                        <a href="index.html" class="site-brand">
+                        <a href="/" class="site-brand">
                             <img src="/static/images/logo.png" alt="logo" srcset="/static/images/logo2x.png 2x">
                         </a>
                     </div><!-- .site-logo -->
@@ -40,12 +40,12 @@
                         <div class="dropdown-menu dropdown-menu-end">
                             <div class="user-dropdown">
                                 <div class="user-dropdown-head">
-                                    <h6 class="user-dropdown-name">Stefan Harary <span></span></h6>
-                                    <span class="user-dropdown-email">useremail@example.com</span>
+                                    <h6 class="user-dropdown-name">{{ active_user.name }} {{ active_user.second_name }} <span></span></h6>
+                                    <span class="user-dropdown-email">{{ active_user.email }}</span>
                                 </div>
                                 <div class="user-dropdown-balance">
                                     <h6>Депозиты</h6>
-                                    <h3>$ 120,000,000 </h3>
+                                    <h3>$ {{ active_user.invest_sum }} </h3>
                                    <!--  <ul>
                                         <li>1.240 BTC</li>
                                         <li>19.043 ETH</li>
@@ -58,12 +58,12 @@
                                 </ul> -->
                                 <div class="gaps-1x"></div>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="account.html"><i class="ti ti-user"></i>Кабинет</a></li>
-                                    <li><a href="transactions.html"><i class="ti ti-pie-chart"></i>Доход</a></li>
-                                    <li><a href="referrals.html"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
+                                    <li><a href="/cabinet"><i class="ti ti-user"></i>Кабинет</a></li>
+                                    <li><a href="/profit"><i class="ti ti-pie-chart"></i>Доход</a></li>
+                                    <li><a href="/transaction"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
                                 </ul>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="login.html"><i class="ti ti-power-off"></i>Выйти</a></li>
+                                    <li><a href="/logout"><i class="ti ti-power-off"></i>Выйти</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
             <div class="d-lg-flex align-items-center justify-content-between">
                 <div class="topbar-lg d-none d-lg-block">
                     <div class="site-logo">
-                        <a href="index.html" class="site-brand">
+                        <a href="/" class="site-brand">
                             <img src="/static/images/logo.png" alt="logo" srcset="/static/images/logo2x.png 2x">
                         </a>
                     </div><!-- .site-logo -->
@@ -99,25 +99,25 @@
                             <div class="dropdown-menu dropdown-menu-end">
                                 <div class="user-dropdown">
                                     <div class="user-dropdown-head">
-                                        <h6 class="user-dropdown-name">Stefan Harary <span></span></h6>
-                                        <span class="user-dropdown-email">useremail@example.com</span>
+                                        <h6 class="user-dropdown-name">{{ active_user.name }} {{ active_user.second_name }} <span></span></h6>
+                                        <span class="user-dropdown-email">{{ active_user.email }}</span>
                                     </div>
                                     <div class="user-dropdown-balance">
                                         <h6>Депозиты</h6>
-                                        <h3>$ 120,000,000 </h3>
+                                        <h3>$ {{ active_user.invest_sum }}</h3>
                                    <!--  <ul>
                                         <li>1.240 BTC</li>
                                         <li>19.043 ETH</li>
                                         <li>6,500.13 USD</li>
                                     </ul> -->
                                     </div>
-                                    <ul class="user-dropdown-links">
-                                    <li><a href="account.html"><i class="ti ti-user"></i>Кабинет</a></li>
-                                    <li><a href="transactions.html"><i class="ti ti-pie-chart"></i>Доход</a></li>
-                                    <li><a href="referrals.html"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
+                                   <ul class="user-dropdown-links">
+                                    <li><a href="/cabinet"><i class="ti ti-user"></i>Кабинет</a></li>
+                                    <li><a href="/profit"><i class="ti ti-pie-chart"></i>Доход</a></li>
+                                    <li><a href="/transaction"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
                                 </ul>
                                 <ul class="user-dropdown-links">
-                                    <li><a href="login.html"><i class="ti ti-power-off"></i>Выйти</a></li>
+                                    <li><a href="/logout"><i class="ti ti-power-off"></i>Выйти</a></li>
                                 </ul>
                                 </div>
                             </div>
@@ -137,18 +137,18 @@
                         <div class="user-image">
                             <img src="/static/images/user-thumb-lg.png" alt="thumb">
                         </div>
-                        <h6 class="user-name">Stefan Harary</h6>
-                        <div class="user-uid">Unique ID: <span>IXIA1A105</span></div>
+                        <h6 class="user-name">{{ active_user.name }} {{ active_user.second_name }} </h6>
+<!--                        <div class="user-uid">Unique ID: <span>IXIA1A105</span></div>-->
                        <!--  <ul class="btn-grp guttar-10px">
                             <li><a href="#" class="btn btn-xs btn-warning">Confirm Email</a></li>
                             <li><a href="kyc.html" class="btn btn-xs btn-warning">KYC Pending</a></li>
                         </ul> -->
                     </div><!-- .user-box -->
-                    <ul class="user-icon-nav">
-                        <li><a href="index.html"><em class="ti ti-user"></em>Кабинет</a></li>
-                        <li><a href="transactions.html"><em class="ti ti-pie-chart"></em>Доход</a></li>
-                        <li><a href="referrals.html"><em class="ti ti-control-shuffle"></em>Транзакции</a></li>
-                    </ul><!-- .user-icon-nav -->
+                     <ul class="user-dropdown-links">
+                                    <li><a href="/cabinet"><i class="ti ti-user"></i>Кабинет</a></li>
+                                    <li><a href="/profit"><i class="ti ti-pie-chart"></i>Доход</a></li>
+                                    <li><a href="/transaction"><i class="ti ti-control-shuffle"></i>Транзакции</a></li>
+                                </ul><!-- .user-icon-nav -->
                     <div class="user-sidebar-sap"></div><!-- .user-sidebar-sap -->
                     <!-- <ul class="user-nav">
                         <li><a href="how-to.html">How to buy?</a></li>
@@ -213,70 +213,28 @@
                         <table class="data-table refferal-table">
                             <thead>
                                 <tr>
-                                    <th class="refferal-name"><span>Referee</span></th>
-                                    <th class="refferal-tokens"><span>Bought Token</span></th>
-                                    <th class="refferal-bonus"><span>Bonus</span></th>
-                                    <th class="refferal-date"><span>Date</span></th>
-                                    <th class="refferal-channel"><span>Channel</span></th>
+                                    <th class="refferal-name"><span>Сумма</span></th>
+                                    <th class="refferal-tokens"><span>Тип транзакции</span></th>
+                                    <th class="refferal-bonus"><span>Статус</span></th>
+                                    <th class="refferal-date"><span>Дата</span></th>
                                 </tr>
                             </thead>
                             <tbody>
+                                {% for tr in transactions %}
                                 <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
+                                    <td class="refferal-name"><i class="fas fa-dollar-sign"></i> {{ tr.withdrawal }}</td>
+                                    <td class="refferal-tokens">зачисления на счет</td>
+                                    <td class="refferal-bonus">Зачислен</td>
+                                    <td class="refferal-date">{{ tr.date }}</td>
                                 </tr>
-                                <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
-                                </tr>
-                                <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
-                                </tr>
-                                <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
-                                </tr>
-                                <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
-                                </tr>
-                                <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
-                                </tr>
-                                <tr>
-                                    <td class="refferal-name">Cynthia Foster</td>
-                                    <td class="refferal-tokens">800</td>
-                                    <td class="refferal-bonus">8</td>
-                                    <td class="refferal-date">08-02-2022</td>
-                                    <td class="refferal-channel">Facebook</td>
-                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
                     
-                </div>
-            </div>
-        </div>
+                </div><!-- .user-content -->
+            </div><!-- .d-flex -->
+        </div><!-- .container -->
     </div>
     <!-- UserWraper End -->
     <div class="footer-bar">

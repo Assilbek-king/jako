@@ -1,5 +1,6 @@
 from main.models import *
 import requests
+from datetime import datetime, timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -10,25 +11,7 @@ from django.contrib.auth import login, logout, authenticate
 
 def indexHandler(request):
     diagrams = Diagram.objects.all()
-    # tovars = Tovar.objects.order_by('status')
-    # photos = Photo.objects.all()
 
-    # if request.method == 'POST':
-    #     BOT_TOKEN = "6888390474:AAE2OQa2E9Unu_vvOf4ZKnwJC0RXIU_GsQE"
-    #     TELEGRAM_CHAT_ID = "604469732"
-    #     name = request.POST.get('name')
-    #     phone = request.POST.get('phone')
-    #     comment = request.POST.get('comment')
-    #     feedback = Feedback(name=name, phone=phone, comment=comment)
-    #     feedback.save()
-    #     if comment:
-    #         message = f"Новый клиент\nИмя: {name}\nНомер: {phone}\nТовар: {comment}"
-    #     else:
-    #         message = f"Новый клиент\nИмя: {name}\nНомер: {phone}"
-    #     response = requests.get(
-    #         f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={TELEGRAM_CHAT_ID}&text={message}")
-    #     from django.shortcuts import redirect
-    #     return redirect('/')
 
     return render(request, 'site/index.html', {
         'diagrams': diagrams,
@@ -76,8 +59,29 @@ def dohodHandler(request):
     if user_id:
         active_user = UserProfile.objects.get(id=int(user_id))
 
-    return render(request, 'site/404.html', {
-        'active_user': active_user
+    profits = UserProfit.objects.filter(user__id = active_user.id)
+
+
+    if request.method == 'POST':
+        BOT_TOKEN = "6706713973:AAESvl32lMMGKt2Zi9nBow7RK3xWIP1reJg"
+        TELEGRAM_CHAT_ID = "604469732"
+        withdrawal = request.POST.get('withdrawal')
+        userprofit = UserProfit.objects.get(id=int(request.POST.get('userprofit_id', 0)))
+        date = datetime.now()
+        transaction = UserTransaction(userprofit=userprofit, withdrawal=withdrawal, date=date)
+        transaction.save()
+        if withdrawal:
+            message = f"Инвестор хочет снять деньги \n Имя: {userprofit.user.name} \n Фамилия: {userprofit.user.second_name} \n Номер: {userprofit.user.phone}\n Счет номер: {userprofit.user.card_number}\n Запрос для снятия : {withdrawal}"
+        print(f"Инвестор хочет вернуть деньги \n Имя: {userprofit.user.name} \n Фамилия: {userprofit.user.name} \n Номер: {userprofit.user.phone}\n Счет номер: {userprofit.user.card_number}\n Запрос для снятия : ${withdrawal}")
+        response = requests.get(
+            f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage?chat_id={TELEGRAM_CHAT_ID}&text={message}")
+        from django.shortcuts import redirect
+        return redirect('/profit')
+
+    return render(request, 'add/transactions.html', {
+        'active_user': active_user,
+        'profits': profits,
+
     })
 
 def transactionHandler(request):
@@ -86,6 +90,9 @@ def transactionHandler(request):
     if user_id:
         active_user = UserProfile.objects.get(id=int(user_id))
 
-    return render(request, 'site/404.html', {
-        'active_user': active_user
+    transactions = UserTransaction.objects.filter(userprofit__user__id = active_user.id, status=True)
+
+    return render(request, 'add/referrals.html', {
+        'active_user': active_user,
+        'transactions': transactions,
     })
